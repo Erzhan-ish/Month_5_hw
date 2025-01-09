@@ -19,8 +19,18 @@ class Movie(models.Model):
 
 
 class Review(models.Model):
+    STARS = (
+        (1, '⭐'),
+        (2, '⭐ ⭐'),
+        (3, '⭐ ⭐ ⭐'),
+        (4, '⭐ ⭐ ⭐ ⭐'),
+        (5, '⭐ ⭐ ⭐ ⭐ ⭐')
+    )
+
     text = models.TextField()
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='reviews')
+    stars = models.IntegerField(choices=STARS, default=1)
 
     def __str__(self):
         return self.text
+

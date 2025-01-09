@@ -4,16 +4,34 @@ from .models import Director, Movie, Review
 
 
 class DirectorSerializer(serializers.ModelSerializer):
+    movies = serializers.SerializerMethodField()
     class Meta:
         model = Director
-        fields = 'name'.split()
+        fields = '__all__'
 
-class MovieSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Movie
-        fields = 'title description duration director'.split()
+    def get_movies(self, obj):
+        movies_count = obj.movie_set.count()
+        return movies_count
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = 'text movie'.split()
+        fields = 'text movie stars'.split()
+
+class MovieSerializer(serializers.ModelSerializer):
+    reviews = ReviewSerializer(many=True)
+    average_rating = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Movie
+        fields = 'title description duration director reviews average_rating'.split()
+
+
+    def get_average_rating(self, movie):
+        reviews = movie.reviews.all()
+        if reviews:
+            sum_reviews = sum(i.stars for i in reviews)
+            average_rating = round(sum_reviews / len(reviews), 2)
+            return average_rating
+        else:
+            return None
