@@ -13,10 +13,20 @@ class DirectorSerializer(serializers.ModelSerializer):
         movies_count = obj.movie_set.count()
         return movies_count
 
+class DirectorItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Director
+        fields = '__all__'
+
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = 'text movie stars'.split()
+
+class ReviewItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = '__all__'
 
 class MovieSerializer(serializers.ModelSerializer):
     reviews = ReviewSerializer(many=True)
@@ -35,3 +45,8 @@ class MovieSerializer(serializers.ModelSerializer):
             return average_rating
         else:
             return None
+
+class MovieItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = '__all__'
