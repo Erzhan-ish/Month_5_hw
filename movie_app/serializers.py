@@ -18,6 +18,11 @@ class DirectorItemSerializer(serializers.ModelSerializer):
         model = Director
         fields = '__all__'
 
+class DirectorValidateSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=20, min_length=2)
+
+
+
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
@@ -27,6 +32,13 @@ class ReviewItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = '__all__'
+
+class ReviewValidateSerializer(serializers.Serializer):
+    text = serializers.CharField()
+    movie_id = serializers.IntegerField()
+    stars = serializers.IntegerField()
+
+
 
 class MovieSerializer(serializers.ModelSerializer):
     reviews = ReviewSerializer(many=True)
@@ -50,3 +62,9 @@ class MovieItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = '__all__'
+
+class MovieValidateSerializer(serializers.Serializer):
+    title = serializers.CharField(max_length=20, min_length=3)
+    description = serializers.CharField(required=False)
+    duration = serializers.IntegerField()
+    director_id = serializers.IntegerField()
