@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bfa5faae-1649-4e11-bc05-30e97ea10a55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Afisha/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Afisha/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +76,7 @@
       <workItem from="1737624768725" duration="2163000" />
       <workItem from="1737632279991" duration="1120000" />
       <workItem from="1737795810785" duration="25000" />
-      <workItem from="1737978920655" duration="2047000" />
+      <workItem from="1737978920655" duration="2477000" />
     </task>
     <servers />
   </component>
